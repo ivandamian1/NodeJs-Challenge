@@ -58,3 +58,5 @@ Email: adroverivan7@example.com
 
 ## Walkthrough
 For a complete walkthrough of how to use this application, watch the video linked below:
+
+[Video](https://drive.google.com/file/d/1USmZG25-gV5Zirwo8uPNqEVOS4UE6hj_/view?usp=sharing)
