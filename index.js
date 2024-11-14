@@ -1,32 +1,8 @@
 // TODO: Include packages needed for this application
 import inquirer from 'inquirer';
 import fs from 'fs';
+import generateMarkdown from './generateMarkdown.js';
 
-const generateReadme = ({ title, description, install, usage, license, contribute, test, github, email}) =>
-    `#${title}
-   ## Table of contents
-  -[Description](#Description)
-  -[Installation](#Installation)
-  -[Usage](#Usage)
-  -[License](#License)
-  -[Contributing](#Contributing)
-  -[Tests](#Tests)
-  -[Questions](#Questions)
-  ## Description
-  ${description}
-  ## Installation
-  ${install}
-  ## Usage
-  ${usage}
-  ## License
-  ${license}
-  ## Contributing
-  ${contribute}
-  ## Tests
-  ${test}
-  ## Questions
-  If you have any additional questions, you can reach me in github at: ${github}, or via email at: ${email}
-  `
 // TODO: Create an array of questions for user input
 const questions = [];
 inquirer
@@ -53,9 +29,9 @@ inquirer
       },
       {
         type: 'list',
-        message: 'Which license will your application use?',
+        message: 'Which license is your application covered under?',
         name: 'license',
-        choices: ['Apache 2.0', 'GNU General', 'GNU Lesser', 'MIT', 'BSD 2-Clause', 'BSD 3-Clause', 'Boost Software', 'Creative Commons Zero', 'Eclipse', 'Mozilla', 'The Unlicense'],
+        choices: ['MIT', 'GPLv3', 'Apache 2.0', 'None'],
       },
       {
         type: 'input',
@@ -81,10 +57,11 @@ inquirer
 
 // TODO: Create a function to write README file
 .then ((answers) => {
-const readmePageContent = generateReadme(answers);
-fs.writeFile('README.md', readmePageContent, (err)=>
+const readmePageContent = generateMarkdown(answers);
+fs.writeFile('autoREADME.md', readmePageContent, (err)=>
     err ? console.log(err): console.log ('Successfully created README.md'))
 })
+
 
 function writeToFile(fileName, data) {}
 // TODO: Create a function to initialize app
